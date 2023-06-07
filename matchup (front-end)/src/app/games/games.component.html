@@ -1,0 +1,17 @@
+<div
+    class="col-md-6 col-sm-6 col-lg-4"
+    style="padding: 3%"
+    *ngFor="let game of games"
+  >
+    <ul class="list-group">
+      <li class="list-group-item" routerLink="/juego/{{ game.id }}">{{ game.name }}</li>
+      <li class="list-group-item">
+         Año: {{ game.year }}
+      </li>
+
+      <img src="{{ game.cover_url }}" />
+        <li class="list-group-item">
+           Versión: {{ game.current_version }}
+        </li>
+    </ul>
+  </div>
