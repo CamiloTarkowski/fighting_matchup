@@ -1,5 +1,11 @@
 <h1>{{ game?.name }}</h1>
 <p>Año: {{ game?.year }}</p>
 <img src="{{ game?.cover_url }}">
+
 <p>Versión: {{ game?.current_version }}</p>
 <p>Fecha de creación: {{ game?.created_at }}</p>
+
+<div *ngFor="let character of characters">
+    <p>{{ character.name }}</p>
+    <img src="{{ character.img_url }}" alt="">
+</div>
