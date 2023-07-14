@@ -12,8 +12,8 @@ export class CharactersService {
 
   constructor(private _http: HttpClient) { }
 
-  getAllCharacter(game_id: number): Observable<Character[]> {
-    return this._http.get<Character[]>(this.link + game_id.toString());
+  getAllCharacter(gameId: number): Observable<Character[]> {
+    return this._http.get<Character[]>(this.link + gameId.toString());
   }
 
   getCharacter(id: number): Observable<Character> {

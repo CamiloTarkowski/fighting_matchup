@@ -23,18 +23,18 @@ public class Character {
 	private String img_url;
 	
 	@Column(name = "game_id", nullable = false, unique = true)	
-	private Long game_id;
+	private Long gameId;
 	
 	public Character() {
 		
 	}
 
-	public Character(Long id, String name, String img_url, Long game_id) {
+	public Character(Long id, String name, String img_url, Long gameId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.img_url = img_url;
-		this.game_id = game_id;
+		this.gameId = gameId;
 	}
 
 	public Long getId() {
@@ -61,12 +61,12 @@ public class Character {
 		this.img_url = img_url;
 	}
 
-	public Long getGame_id() {
-		return game_id;
+	public Long getGameId() {
+		return gameId;
 	}
 
-	public void setGame_id(Long game_id) {
-		this.game_id = game_id;
+	public void setGameId(Long gameId) {
+		this.gameId = gameId;
 	}
 	
 	

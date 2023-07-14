@@ -5,7 +5,10 @@
 <p>Versión: {{ game?.current_version }}</p>
 <p>Fecha de creación: {{ game?.created_at }}</p>
 
-<div *ngFor="let character of characters">
-    <p>{{ character.name }}</p>
-    <img src="{{ character.img_url }}" alt="">
-</div>
+<section *ngFor="let character of characters">
+    <p>{{ character?.id}}</p>
+    <p>{{ character?.name }}</p>
+    <p>Game id:{{ character?.gameId }}</p>
+    <img src="{{ character?.img_url }}" alt="">
+    <hr>
+</section>

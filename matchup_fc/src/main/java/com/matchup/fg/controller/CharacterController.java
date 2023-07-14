@@ -1,6 +1,5 @@
 package com.matchup.fg.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,16 +22,12 @@ public class CharacterController {
 	@Autowired
 	private CharacterRepository repository;
 	
-	@GetMapping("/characters/{game_id}")	
-	public List<Character> getCharactersByGameId(List<Character> characters, Long game_id) {
-	    List<Character> result = new ArrayList<>();
-	    for (Character character : characters) {
-	        if (character.getGame_id() == game_id) {
-	            result.add(character);
-	        }
-	    }
-	    return result;
-	}
+	
+	@GetMapping("/characters/{gameId}")
+    public List<Character> getCharactersByGameId(@PathVariable Long gameId) {
+        List<Character> characters = repository.findAllByGameId(gameId);
+        return characters;
+    }
 	
 	@GetMapping("/character/{id}")	
 	public ResponseEntity<Character> getCharacterById(@PathVariable Long id){
