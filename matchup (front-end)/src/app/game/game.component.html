@@ -1,14 +1,56 @@
-<h1>{{ game?.name }}</h1>
-<p>Año: {{ game?.year }}</p>
-<img src="{{ game?.cover_url }}">
 
-<p>Versión: {{ game?.current_version }}</p>
-<p>Fecha de creación: {{ game?.created_at }}</p>
+<body>
+    
+    <div class="info-game">
+        <h1>{{ game?.name }}</h1>
+        <p>Año: {{ game?.year }}</p>
+        <img src="{{ game?.cover_url }}">
 
-<section *ngFor="let character of characters">
-    <p>{{ character?.id}}</p>
-    <p>{{ character?.name }}</p>
-    <p>Game id:{{ character?.gameId }}</p>
-    <img src="{{ character?.img_url }}" alt="">
-    <hr>
-</section>
+        <p>Versión: {{ game?.current_version }}</p>
+    </div>
+
+    <div class = "container text-center">
+        <div class = "row align-items-center">
+            <div class = "col">
+                <h1>1P</h1>
+                <table>
+                    <tbody>
+                        <tr *ngFor="let row of getRows()">
+                        <td *ngFor="let character of row">
+                                
+                                <div class = "char_name1">
+                                    <img src="{{ character?.img_url}}" class = "img_url p1" alt="">
+                                    {{ character?.name }}
+                                </div>
+                                <br>
+                            </td>
+                        </tr>            
+                    </tbody>       
+                </table>
+            </div>
+            <div class = "col versus">
+                <h1>VS</h1>
+            </div>
+            <div class = "col">
+                <h1>2P</h1>
+                <table>
+                    <tbody>
+                        <tr *ngFor="let row of getRows()">
+                        <td *ngFor="let character of row">
+                            <div class = "char_name2">
+                                <img src="{{ character?.img_url}}" class = "img_url p2" alt="">
+                                {{ character?.name }}
+                            </div>
+                                <br>
+                            </td>
+                        </tr>            
+                    </tbody>
+                </table>
+            </div>
+        </div>       
+        
+
+
+    </div>
+
+</body>

@@ -17,23 +17,41 @@ export class GameComponent implements OnInit {
   game: Game = {} as Game;
   game_id : number = 0;
 
+  getRows(): any[][] { 
+    const rows = [];
+    for (let i = 0; i < this.characters.length; i += 8) {
+      rows.push(this.characters.slice(i, i + 8));
+    }
+    return rows;
+  } 
+  // getRows() define la cantidad de filas de 8 elementos basándose en el total de elementos del arreglo de objetos
+
   constructor(private gamesService: GamesService,
               private route: ActivatedRoute,
               private router: Router,
               private characterService: CharactersService)
-              { }
-  getGameId(gameId : number){
-    this.game_id = gameId;
-  }
+              {
+  
+               }
 
   ngOnInit(): void {
+    
+    function sortByName(characters : Character[]){ //ordenar personajes alfabéticamente
+      return characters.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    function rowCharacters(index : number){
+
+    }
+
     this.route.params.subscribe((params) => {
       const id = params['id'];
       this.gamesService.getGame(id).subscribe(
-        (game: Game) => {
+        (game) => {
           this.game = game;
           this.characterService.getAllCharacter(this.game.id).subscribe((characters) => {
             this.characters = characters;
+            this.characters = sortByName(this.characters);
           });
         },
         (err) => {
