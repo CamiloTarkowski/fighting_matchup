@@ -51,21 +51,27 @@ body{
 .p1{
     border: none;
     width: 60px;
+    box-shadow: none;
     transition: border-color 0.3s ease-in-out;
-    transition: width 0.3s;
 }
 
 .p1:hover{
-    border: 2px solid #758de1;
+    border: 1px solid #758de1;
+    box-shadow: inset 0 0 0 13px #758de1;
     width: 80px;
 }
 
 .p2{
     border: none;
     transition: border-color 0.3s ease-in-out;
-    
 }
 
 .p2:hover{
-    border: 2px solid red;
+    border: 1px solid #de4c4c;
+    box-shadow: inset 0 0 0 13px #de4c4c;
+}
+
+.buscar{
+    padding-top: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

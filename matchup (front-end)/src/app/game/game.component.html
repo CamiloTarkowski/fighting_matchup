@@ -18,7 +18,7 @@
                         <tr *ngFor="let row of getRows()">
                         <td *ngFor="let character of row">
                                 
-                                <div class = "char_name1">
+                                <div class = "char_name1" (click)="isSelected1(character?.id)">
                                     <img src="{{ character?.img_url}}" class = "img_url p1" alt="">
                                     {{ character?.name }}
                                 </div>
@@ -29,7 +29,26 @@
                 </table>
             </div>
             <div class = "col versus">
+                <div *ngIf="show1 == true">
+                    <img src="{{ character1?.img_url}}" class = "img_url" alt="">
+                </div>
+                <div *ngIf="show1 == false">
+                    <img src='assets/Roster/not_selected1.png' class = "img_url" alt="">
+                </div>
                 <h1>VS</h1>
+                <div *ngIf="show2 == true">
+                    <img src="{{ character2?.img_url}}" class = "img_url" alt="">
+                </div>
+                <div *ngIf="show2 == false">
+                    <img src='assets/Roster/not_selected2.png' class = "img_url" alt="">
+                </div>
+                <div *ngIf = "show1 == true && show2 == true" class = "buscar" >
+                    <button type="button" class="btn btn-primary btn-lg" (click)="twoId(character1?.id, character2?.id)" 
+                    routerLink="matchups/{{ id1 }}/{{ id2 }}">Buscar</button>
+                </div>
+                <div *ngIf = "show1 == false || show2 == false" class = "buscar">
+                    <button type="button" class="btn btn-primary btn-lg" disabled>Buscar</button>
+                </div>
             </div>
             <div class = "col">
                 <h1>2P</h1>
@@ -37,7 +56,7 @@
                     <tbody>
                         <tr *ngFor="let row of getRows()">
                         <td *ngFor="let character of row">
-                            <div class = "char_name2">
+                            <div class = "char_name2" (click)="isSelected2(character?.id)">
                                 <img src="{{ character?.img_url}}" class = "img_url p2" alt="">
                                 {{ character?.name }}
                             </div>

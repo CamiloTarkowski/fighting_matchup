@@ -35,11 +35,11 @@ const routes: Routes = [
     component: SignUpComponent,
   },
   {
-    path: 'matchup/:id',
+    path: 'matchup/',
     component: MatchupComponent,
   },
   {
-    path: 'matchups',
+    path: 'matchups/:id1/:id2',
     component: MatchupsComponent,
   },
   {

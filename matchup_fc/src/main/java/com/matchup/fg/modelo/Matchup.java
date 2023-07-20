@@ -28,21 +28,25 @@ public class Matchup {
 	@Column (name = "id_adv_for1", nullable = false)
 	private boolean id_adv_for1;
 	
-	@Column (name = "id_character", nullable = false, unique = true)
-	private Long id_character;
+	@Column (name = "id_character1", nullable = false, unique = true)
+	private Long idCharacter1;
+	
+	@Column (name = "id_character2", nullable = false, unique = true)
+	private Long idCharacter2;
 	
 	public Matchup() {
 		
 	}
 
-	public Matchup(Long id, String title, String description, String gif_url, boolean id_adv_for1, Long id_character) {
+	public Matchup(Long id, String title, String description, String gif_url, boolean id_adv_for1, Long idCharacter1, Long idCharacter2) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.gif_url = gif_url;
 		this.id_adv_for1 = id_adv_for1;
-		this.id_character = id_character;
+		this.idCharacter1 = idCharacter1;
+		this.idCharacter2 = idCharacter2;
 	}
 
 	public Long getId() {
@@ -85,12 +89,20 @@ public class Matchup {
 		this.id_adv_for1 = id_adv_for1;
 	}
 
-	public Long getId_character() {
-		return id_character;
+	public Long getIdCharacter1() {
+		return idCharacter1;
 	}
-
-	public void setId_character(Long id_character) {
-		this.id_character = id_character;
+	
+	public Long getIdCharacter2() {
+		return idCharacter2;
 	}
+	public void setIdCharacter1(Long idCharacter1) {
+		this.idCharacter1 = idCharacter1;
+	}
+		
+	public void setId_character2(Long idCharacter2) {
+		this.idCharacter2 = idCharacter2;
+	}
+		
 	
 }

@@ -1,39 +1,37 @@
 package com.matchup.fg.controller;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.matchup.fg.modelo.Matchup;
 import com.matchup.fg.repository.MatchupRepository;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("")
 public class MatchupController {
+    private final MatchupRepository matchupRepository;
 
-	@Autowired
-	private MatchupRepository repository;
+    public MatchupController(MatchupRepository matchupRepository) {
+        this.matchupRepository = matchupRepository;
+    }
 
-	@GetMapping("/matchups")
-	public List<Matchup> getAllMatchup() {
-		return repository.findAll();
-	}
-	@GetMapping("/matchup/{id}")	
-	public ResponseEntity<Matchup> getMatchupById(@PathVariable Long id){
-        Optional<Matchup> optionalMatchup = repository.findById(id);
-        
-        if (optionalMatchup.isPresent()) {
-        	Matchup matchup = optionalMatchup.get();
-            return ResponseEntity.ok(matchup);
+    @GetMapping("matchups/{idCharacter1}/{idCharacter2}")
+    public ResponseEntity<List<Matchup>> getAllMatchupsByCharacterIds(@RequestParam("idCharacter1") Long idCharacter1,
+                                                                      @RequestParam("idCharacter2") Long idCharacter2) {
+        List<Matchup> matchups = matchupRepository.findByidCharacter1AndIdCharacter2(idCharacter1, idCharacter2);
+
+        if (matchups.isEmpty()) {
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(matchups);
         }
-	}
-
+    }
 }
